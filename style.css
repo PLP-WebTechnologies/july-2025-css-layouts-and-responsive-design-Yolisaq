@@ -1,0 +1,145 @@
+/* Basic Reset and Setup */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "content sidebar"
+    "footer footer";
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  grid-area: header;
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Navigation - Flexbox */
+nav {
+  grid-area: nav;
+  background: #333;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 14px 0;
+  display: block;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  background: #575757;
+}
+
+/* Main Content Area (Grid children) */
+main {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 20px;
+  grid-area: content / content / sidebar / sidebar;
+}
+
+.content {
+  background: #e2e8f0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.sidebar {
+  background: #f0f4f8;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Sidebar cards - Flexbox */
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+  grid-area: footer;
+  background: #222;
+  color: #bbb;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
+
+/* Responsive Media Queries */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .container {
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "content content"
+      "sidebar sidebar"
+      "footer footer";
+    grid-template-columns: 1fr;
+  }
+  
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .nav-links {
+    flex-direction: column;
+  }
+
+  .nav-links li {
+    margin: 5px 0;
+  }
+  
+  .content, .sidebar {
+    padding: 15px 10px;
+  }
+}
